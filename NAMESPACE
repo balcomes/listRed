@@ -1,4 +1,9 @@
-exportPattern("^[[:alpha:]]+")
+#exportPattern("^[[:alpha:]]+")
+
+export(go)
+export(stopws)
+export(sendList)
+export(returnList)
 
 import(httpuv)
 import(RJSONIO)

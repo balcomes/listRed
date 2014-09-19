@@ -7,8 +7,9 @@ View/edit R list objects in the browser via httpuv:
 listRed
 }
 \description{
-Insert description in later...
+View/edit R list objects in the browser via httpuv.
 }
+
 \details{
 \tabular{ll}{
 Package: \tab listRed\cr
@@ -42,7 +43,10 @@ Maintainer: Shawn Balcome <balc0022@umn.edu>
 
 }
 \examples{
+if(interactive()) {
 go()
 sendList(as.list(mtcars))
-returnList()
+new_list <- returnList()
+stopws("myws")
+}
 }
