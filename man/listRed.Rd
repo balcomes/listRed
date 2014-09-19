@@ -31,7 +31,7 @@ Maintainer: Shawn Balcome <balc0022@umn.edu>
 }
 
 \acknowledgements{
-Paul Shannon, Martin Morgan
+Paul Shannon, Martin Morgan, Jos de Jong
 }
 
 \keyword{ httpuv }
