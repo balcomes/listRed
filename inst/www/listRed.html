@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/josdejong/jsoneditor/master/jsoneditor.css">
+<script type="text/javascript" src="https://rawgit.com/josdejong/jsoneditor/master/jsoneditor.js"></script>
+</head>
+<body>
+<div id="jsoneditor" style="width: 100%; height: 100%;"></div>
+<script type="text/javascript">
+
+var container = document.getElementById("jsoneditor");
+var editor = new JSONEditor(container);
+var ws = new WebSocket("ws://localhost:9454");
+var payload;
+
+//------------------------------------------------------------------------------
+function returnList(payload){ 
+  returnMsg = {cmd: payload.callback, callback: "", payload: editor.get()};
+  console.log("=== returnMsg");
+  console.log(returnMsg);
+  ws.send(JSON.stringify(returnMsg));
+}
+//------------------------------------------------------------------------------
+ws.onmessage = function(msg){
+  msg = JSON.parse(msg.data);
+  console.log("=== ws.onmessage");
+  console.log(msg);
+  dispatchMessage(msg);
+}
+//------------------------------------------------------------------------------
+function dispatchMessage(msg){
+  switch(msg.cmd){
+    case "sendList":
+      var json = msg.payload
+      editor.set(json);
+      break;
+    case "returnList":
+      returnList(msg);
+      break;
+    default:
+      console.log("unrecognized cmd: " + msg.cmd);
+  }
+}
+//------------------------------------------------------------------------------
+
+</script>
+</body>
+</html>

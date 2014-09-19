@@ -1,0 +1,9 @@
+Package: listRed
+Type: Package
+Title: View/edit R list objects in the browser via httpuv
+Version: 1.0
+Date: 2014-09-19
+Author: Shawn Balcome
+Maintainer: Maintainer: Shawn Balcome <balc0022@umn.edu>
+Description: View/edit R list objects in the browser via httpuv
+License: Artistic-2.0 | file LICENSE
