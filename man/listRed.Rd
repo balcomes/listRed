@@ -23,15 +23,9 @@ Insert overview and important functions later.
 \author{
 Shawn Balcome
 
-Maintainer: Shawn Balcome <balc0022@umn.edu>
+Author/Maintainer: Shawn Balcome <balc0022@umn.edu>
+Acknowledgements:Paul Shannon, Martin Morgan, Jos de Jong
 
-}
-\references{
-
-}
-
-\acknowledgements{
-Paul Shannon, Martin Morgan, Jos de Jong
 }
 
 \keyword{ httpuv }
