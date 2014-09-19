@@ -24,6 +24,7 @@ Insert overview and important functions later.
 Shawn Balcome
 
 Author/Maintainer: Shawn Balcome <balc0022@umn.edu>
+
 Acknowledgements:Paul Shannon, Martin Morgan, Jos de Jong
 
 }
