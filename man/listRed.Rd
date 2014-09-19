@@ -30,6 +30,10 @@ Maintainer: Shawn Balcome <balc0022@umn.edu>
 
 }
 
+\acknowledgements{
+Paul Shannon, Martin Morgan
+}
+
 \keyword{ httpuv }
 \keyword{ RJSONIO }
 \keyword{ R.utils }
