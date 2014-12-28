@@ -8,7 +8,7 @@ Installation
 
 Install the devtools package if necessary (install.packages("devtools")) and run:
 
-devtools::install_github("listRed", "balcomes")
+devtools::install_github("balcomes/listRed")
 
 Example Usage
 =============
