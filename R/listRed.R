@@ -59,19 +59,19 @@ stopws <- function(server){
 #-------------------------------------------------------------------------------
 send <- function(cmd)
 {
-  myws$send(toJSON(cmd)) 
+  pkg.env$myws$send(toJSON(cmd)) 
 }
 #-------------------------------------------------------------------------------
 sendList <- function(mylist)
 {
   msg <- list(cmd="sendList", payload=mylist)
-  myws$send(toJSON(msg))
+  pkg.env$myws$send(toJSON(msg))
 }
 #-------------------------------------------------------------------------------
 returnList <- function()
 {
   pkg.env$.lastMessage <- NULL
-  myws$send(toJSON(list(cmd="returnList", callback="handleReturn",payload="")));
+  pkg.env$myws$send(toJSON(list(cmd="returnList", callback="handleReturn",payload="")));
   while(is.null(.lastMessage)) {
     Sys.sleep(1)
   }
