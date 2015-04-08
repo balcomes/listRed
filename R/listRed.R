@@ -2,8 +2,13 @@ library(httpuv)
 library(RJSONIO)
 library(R.utils)
 
-assign("myws", NULL, envir = .GlobalEnv)
-assign(".lastMessage", NULL, envir = .GlobalEnv)
+pkg.env <- new.env()
+
+pkg.env$myws <- NULL
+pkg.env$.lastMessage <- NULL
+
+#assign("myws", NULL, envir = .GlobalEnv)
+#assign(".lastMessage", NULL, envir = .GlobalEnv)
 fpath <- system.file(c("inst", "www"), "listRed.html", package="listRed")
 #-------------------------------------------------------------------------------
 app <- list(
@@ -19,10 +24,10 @@ app <- list(
       body = c(file=fpath))
   },
   onWSOpen = function(ws) {
-    assign("myws", ws, envir = .GlobalEnv)
+    pkg.env$myws <- ws
     ws$onMessage(function(binary, rawMessage) {
       message <- fromJSON(rawMessage);
-      assign(".lastMessage", message, envir = .GlobalEnv)
+      pkg.env$.lastMessage <- message
       if(!is(message, "list")){
         printf("new websocket message is not a list");
         return;
@@ -65,7 +70,7 @@ sendList <- function(mylist)
 #-------------------------------------------------------------------------------
 returnList <- function()
 {
-  assign(".lastMessage", NULL, envir = .GlobalEnv)
+  pkg.env$.lastMessage <- NULL
   myws$send(toJSON(list(cmd="returnList", callback="handleReturn",payload="")));
   while(is.null(.lastMessage)) {
     Sys.sleep(1)
@@ -75,7 +80,7 @@ returnList <- function()
 #-------------------------------------------------------------------------------
 handleReturn <- function(message)
 {
-  assign(".lastMessage", message$payload, envir = .GlobalEnv)
+  pkg.env$.lastMessage <- message$payload
   NULL  
 }
 #-------------------------------------------------------------------------------
